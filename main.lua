@@ -46,10 +46,16 @@ function file_loaded()
 	local youtube_id2 = string.match(video_path, "https?://w?w?w?%.?youtube%.com/v/([%w-_]+).*")
 	local youtube_id3 = string.match(video_path, "/watch.*[?&]v=([%w-_]+).*")
 	local youtube_id4 = string.match(video_path, "/embed/([%w-_]+).*")
+	local youtube_id5 = string.match(video_path, ".*googlevideo.com/videoplayback.*")
 	youtube_id = youtube_id1 or youtube_id2 or youtube_id3 or youtube_id4
 	if not youtube_id or string.len(youtube_id) < 11 then return end
-	youtube_id = string.sub(youtube_id, -11, -1)
-
+	if youtube_id then
+		youtube_id = string.sub(youtube_id, -11, -1)
+	end
+	if youtube_id5 then
+		vtitle = mp.get_property("media-title")
+		youtube_id = io.popen("youtube-dl --get-id \"ytsearch1:"..vtitle.."\"")
+	end
 	getranges()
 	if ranges then
 		ON = true
