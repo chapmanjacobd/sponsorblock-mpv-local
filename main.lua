@@ -52,10 +52,12 @@ function file_loaded()
 	if youtube_id then
 		youtube_id = string.sub(youtube_id, -11, -1)
 	end
+	
 	if youtube_id5 then
 		vtitle = mp.get_property("media-title")
 		youtube_id = io.popen("youtube-dl --get-id \"ytsearch1:"..vtitle.."\"")
 	end
+	
 	getranges()
 	if ranges then
 		ON = true
