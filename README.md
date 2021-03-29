@@ -9,3 +9,18 @@ git clone 'https://github.com/asakura42/sponsorblock-mpv-local.git' ~/.config/mp
 ```
 
 default bind is `b` to turn plugin on and off
+
+If you want use this script with pipe-viewer (https://github.com/trizen/pipe-viewer), edit your pipe-viewer config by modifying the mpv section:
+
+```
+ mpv => {
+          arg => "--really-quiet *URL*",
+          audio => "",
+          cmd => "mpv",
+          fs => "--fullscreen",
+          novideo => "--no-video",
+          srt => "--sub-file=*SUB*",
+        },
+```
+
+straw-viewer support is in another branch, unstable and in progress, you can send me PR or issue if you know how to make it work.
