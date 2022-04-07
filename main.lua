@@ -46,7 +46,9 @@ function file_loaded()
 	local youtube_id2 = string.match(video_path, "https?://w?w?w?%.?youtube%.com/v/([%w-_]+).*")
 	local youtube_id3 = string.match(video_path, "/watch.*[?&]v=([%w-_]+).*")
 	local youtube_id4 = string.match(video_path, "/embed/([%w-_]+).*")
-	youtube_id = youtube_id1 or youtube_id2 or youtube_id3 or youtube_id4
+	local localyt_id1 = string.match(video_path, " [[]([%w-_]+)[]].*")
+	local localyt_id2 = string.match(video_path, "-([%w-_]+).*")
+	youtube_id = youtube_id1 or youtube_id2 or youtube_id3 or youtube_id4 or localyt_id1 or localyt_id2
 	if not youtube_id or string.len(youtube_id) < 11 then return end
 	youtube_id = string.sub(youtube_id, -11, -1)
 
