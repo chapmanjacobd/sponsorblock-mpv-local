@@ -24,7 +24,7 @@ function getranges()
 end
 
 function skip_ads(name,pos)
-	if pos ~= nil then
+	if pos ~= nil and ranges ~= nil then
 		for k,v in pairs(ranges) do
 			if tonumber(k) <= pos and tonumber(v) > pos then
 				--this message may sometimes be wrong
